@@ -6,10 +6,10 @@
 int main(){
     int secretNumber = 5;
     int guess;
-    int try = 1;
+    int attempt = 1;
     int result = 0;
 
-    while (try <= MAX_TRIES){
+    while (attempt <= MAX_TRIES){
         result = 0;
         while (result == 0){
             printf("Guess a number between 1 - 10: ");
@@ -19,12 +19,11 @@ int main(){
                 while (getchar() != '\n');
             }
         }
-
         if (secretNumber == guess){
             printf("You got it right! congratulations \n");
             break;
         }
-        else if (try == 3){
+        else if (attempt == 3){
             printf("unfortunately you couldn't get it right, the secret number was: %d :( \n", secretNumber);
             break;
         }
@@ -34,7 +33,12 @@ int main(){
         else{
             printf("Your guess is smaller than the secret number! \n");
         }
-        try ++;
+        attempt ++;
+        if (attempt == 3){
+            printf("You have %d attempt  left \n", 4 - attempt);
+        }else{
+            printf("You have %d attempts left \n", 4 - attempt);
+        }
     }
 
     printf("Thanks for playing!");
